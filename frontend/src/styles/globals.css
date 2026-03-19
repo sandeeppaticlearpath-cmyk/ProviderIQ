@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; }
+  body { @apply bg-slate-50 text-slate-900 font-sans; }
+  :root {
+    --ink:        #1e3a5f;
+    --ink-lt:     #e8f0fe;
+    --teal:       #0d9488;
+    --teal-lt:    rgba(20,184,166,.1);
+    --purple:     #7c3aed;
+    --purple-lt:  rgba(124,58,237,.08);
+    --green:      #059669;
+    --green-lt:   rgba(5,150,105,.08);
+    --red:        #dc2626;
+    --amber:      #d97706;
+    --surf:       #ffffff;
+    --surf2:      #f8fafc;
+    --brd:        #e2e8f0;
+    --r:          10px;
+    --sidebar:    240px;
+  }
+}
+
+@layer components {
+  /* ── Cards ── */
+  .card { @apply bg-white rounded-xl border border-slate-200 p-5 shadow-sm; }
+  .card-sm { @apply bg-white rounded-lg border border-slate-200 p-4; }
+
+  /* ── Buttons ── */
+  .btn-primary   { @apply inline-flex items-center gap-2 px-4 py-2 bg-brand-600 text-white text-sm font-semibold rounded-lg hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-secondary { @apply inline-flex items-center gap-2 px-4 py-2 bg-white text-slate-700 text-sm font-semibold rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors disabled:opacity-50; }
+  .btn-danger    { @apply inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 text-sm font-semibold rounded-lg border border-red-200 hover:bg-red-100 transition-colors; }
+  .btn-ghost     { @apply inline-flex items-center gap-2 px-3 py-1.5 text-slate-600 text-sm font-medium rounded-lg hover:bg-slate-100 transition-colors; }
+  .btn-icon      { @apply inline-flex items-center justify-center w-8 h-8 rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-700 transition-colors; }
+  .btn-xs        { @apply px-2.5 py-1 text-xs; }
+  .btn-sm        { @apply px-3 py-1.5 text-xs; }
+  .btn-lg        { @apply px-6 py-3 text-base; }
+
+  /* ── Inputs ── */
+  .input  { @apply w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white; }
+  .select { @apply w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white; }
+  .label  { @apply block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1; }
+
+  /* ── Badges ── */
+  .badge       { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold; }
+  .badge-blue  { @apply badge bg-blue-100 text-blue-700; }
+  .badge-green { @apply badge bg-emerald-100 text-emerald-700; }
+  .badge-amber { @apply badge bg-amber-100 text-amber-700; }
+  .badge-red   { @apply badge bg-red-100 text-red-700; }
+  .badge-purple{ @apply badge bg-purple-100 text-purple-700; }
+  .badge-gray  { @apply badge bg-slate-100 text-slate-600; }
+  .badge-teal  { @apply badge bg-teal-100 text-teal-700; }
+
+  /* ── Tables ── */
+  .table-wrap { @apply overflow-x-auto rounded-xl border border-slate-200; }
+  .table-wrap table { @apply w-full text-sm; }
+  .table-wrap thead tr { @apply bg-slate-50 border-b border-slate-200; }
+  .table-wrap th { @apply px-4 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wide whitespace-nowrap; }
+  .table-wrap td { @apply px-4 py-3 border-b border-slate-100 text-slate-700; }
+  .table-wrap tbody tr:last-child td { @apply border-b-0; }
+  .table-wrap tbody tr:hover { @apply bg-slate-50; }
+
+  /* ── Modal overlay ── */
+  .modal-overlay { @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4; }
+  .modal-box     { @apply bg-white rounded-2xl shadow-2xl w-full max-h-[90vh] overflow-y-auto; }
+
+  /* ── Sidebar ── */
+  .nav-item  { @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 text-sm font-medium cursor-pointer hover:bg-slate-100 hover:text-slate-900 transition-all; }
+  .nav-item.active { @apply bg-brand-50 text-brand-700 font-semibold; }
+  .nav-section-label { @apply px-3 py-1 text-xs font-bold text-slate-400 uppercase tracking-widest mt-2; }
+
+  /* ── Stage badges ── */
+  .stage-sourced    { @apply badge bg-slate-100 text-slate-600; }
+  .stage-contacted  { @apply badge bg-blue-100 text-blue-700; }
+  .stage-screening  { @apply badge bg-purple-100 text-purple-700; }
+  .stage-interview  { @apply badge bg-amber-100 text-amber-700; }
+  .stage-offer      { @apply badge bg-emerald-100 text-emerald-700; }
+  .stage-placed     { @apply badge bg-green-100 text-green-800; }
+  .stage-rejected   { @apply badge bg-red-100 text-red-700; }
+  .stage-on_hold    { @apply badge bg-gray-100 text-gray-600; }
+
+  /* ── Priority dots ── */
+  .prio-high   { @apply w-2 h-2 rounded-full bg-red-500 flex-shrink-0; }
+  .prio-normal { @apply w-2 h-2 rounded-full bg-blue-400 flex-shrink-0; }
+  .prio-low    { @apply w-2 h-2 rounded-full bg-slate-300 flex-shrink-0; }
+
+  /* ── Animations ── */
+  .slide-in { animation: slideIn .2s ease; }
+  .fade-in  { animation: fadeIn .15s ease; }
+
+  /* ── Scrollbar ── */
+  .thin-scroll { scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
+  .thin-scroll::-webkit-scrollbar { width: 5px; }
+  .thin-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+}
+
+@keyframes slideIn { from { transform: translateX(100%); opacity:0; } to { transform: translateX(0); opacity:1; } }
+@keyframes fadeIn  { from { opacity:0; transform:translateY(-4px); } to { opacity:1; transform:translateY(0); } }
+@keyframes spin    { to { transform: rotate(360deg); } }
+.spin { animation: spin 1s linear infinite; }
+
+/* Kanban drag styles */
+.kanban-col { min-height: 200px; transition: background .15s; }
+.kanban-col.drag-over { @apply bg-brand-50 ring-2 ring-brand-300 ring-inset rounded-xl; }
+.kanban-card { cursor: grab; }
+.kanban-card:active { cursor: grabbing; opacity: .8; }
+
+/* Profile tabs */
+.profile-tab { @apply px-4 py-2.5 text-sm font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-700 transition-colors cursor-pointer whitespace-nowrap; }
+.profile-tab.active { @apply border-brand-600 text-brand-700; }
+
+/* Copilot */
+.copilot-panel { background: linear-gradient(135deg,rgba(124,58,237,.06),rgba(13,148,136,.06)); @apply border border-purple-200 rounded-xl p-4; }
